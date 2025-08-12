@@ -37,7 +37,8 @@ class RegisterView(generics.CreateAPIView):
                 'message':'An unexpected error occurred',
                 'errors':str(e)
             },status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
+
+
 class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
@@ -61,6 +62,7 @@ class LoginView(APIView):
             'message': 'Login failed',
             'errors': serializer.errors
         }, status=status.HTTP_401_UNAUTHORIZED)
+
 
 class LogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
